@@ -1,4 +1,5 @@
 
+import math
 from tkinter import *
 
 root = Tk()
@@ -21,17 +22,50 @@ def button_clear():
 def button_Add():
     first_number = e.get()
     global f_num
+    global math
+    math = "addition"
     f_num = int(first_number)
     e.delete(0, END)
+def button_Sub():
+    first_number = e.get()
+    global f_num
+    global math
+    math = "subtraction"
+    f_num = int(first_number)
+    e.delete(0, END)
+def button_Mul():
+    first_number = e.get()
+    global f_num
+    global math
+    math = "multiply"
+    f_num = int(first_number)
+    e.delete(0, END)
+def button_Dev():
+    first_number = e.get()
+    global f_num
+    global math
+    math = "devide"
+    f_num = int(first_number)
+    e.delete(0, END)
+
 def button_Equal():
     second_number = e.get()
     e.delete(0, END)
-    e.insert(0, f_num + int(second_number))
+    if math == "addition":
+         e.insert(0, f_num + int(second_number))
+    if math == "subtraction":
+         e.insert(0, f_num - int(second_number))
+    if math == "multiply":
+         e.insert(0, f_num * int(second_number))
+    if math == "devide":
+         e.insert(0, f_num / int(second_number))
+    
+
+   
     
     
 
-    return
-
+  
 button_1 = Button(root, text="1", padx=40, pady=20, command=lambda: button_click(1))
 button_2 = Button(root, text="2", padx=40, pady=20, command=lambda: button_click(2))
 button_3 = Button(root, text="3", padx=40, pady=20, command=lambda: button_click(3))
@@ -42,9 +76,12 @@ button_7 = Button(root, text="7", padx=40, pady=20, command=lambda: button_click
 button_8 = Button(root, text="8", padx=40, pady=20, command=lambda: button_click(8))
 button_9 = Button(root, text="9", padx=40, pady=20, command=lambda: button_click(9))
 button_0 = Button(root, text="0", padx=40, pady=20, command=lambda: button_click(0))
-button_C = Button(root, text="Clear", padx=79, pady=20, command=lambda: button_clear())
+button_C = Button(root, text="Clear", padx=76, pady=20, command=lambda: button_clear())
 button_add = Button(root, text= "+",padx=39,pady=20,command=lambda: button_Add())
-button_equal = Button(root, text= "=",padx=91,pady=20,command=lambda: button_Equal())
+button_equal = Button(root, text= "=",padx=86,pady=20,command=lambda: button_Equal())
+button_sub = Button(root, text="-", padx=40, pady=20, command=lambda: button_Sub())
+button_mul = Button(root, text="*", padx=40, pady=20, command=lambda: button_Mul())
+button_dev = Button(root, text="/", padx=40, pady=20, command=lambda: button_Dev())
 
 #put buttons on the screen
 
@@ -64,6 +101,9 @@ button_0.grid(row=4, column=0)
 button_C.grid(row=4,column=1, columnspan=2)
 button_add.grid(row=5,column=0)
 button_equal.grid(row=5, column=1,columnspan=2)
+button_sub.grid(row=6, column=0)
+button_mul.grid(row=6, column=1)
+button_dev.grid(row=6, column=2)
 
 
 
